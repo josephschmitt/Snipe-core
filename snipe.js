@@ -89,7 +89,9 @@ var Snipe = Class.extend({
             switch (e.propertyName) {
                 case 'opacity':
                     if (hasClass(element, 'in')) {
+                        var yScroll = window.scrollY;
                         field.focus();
+                        window.scrollTo(window.scrollX, yScroll);
                     }
                     else {
                         destroy();
@@ -212,19 +214,5 @@ var Snipe = Class.extend({
                 options.onRefreshed(element.clientHeight);
             }
         };
-
-
-// CONSTRUCTOR ________________________________________________________________
-
-        //Listen on the entire window for the activation shortcut key
-        window.addEventListener('keydown', function(e) {
-            var preventDefault = true;
-            
-            //Ctrl + Alt + Space
-            if (e.ctrlKey && e.altKey && e.keyCode === 32) {
-                self.toggle();
-                e.preventDefault();
-            }
-        }, false);
     }
 });
