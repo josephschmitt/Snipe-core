@@ -4,6 +4,9 @@ Snipe.Results = Class.extend({
      * @param options (Object) - Options for the method.
      *  Eg.
      *  options: {
+     *      //Maximum number of results to display
+     *      maxResults: 5,
+     *
      *      select: function(winid, tabid) {
      *          //Method to handle what happens when an item is selected
      *      }
@@ -28,7 +31,7 @@ Snipe.Results = Class.extend({
 
                 for (var i = 0, length = items.length; i < length; i++) {
                     if (i < 5) {
-                        height += items[i].clientHeight + 20;
+                        height += items[i].clientHeight + 1;
                     }
                 }
 
@@ -76,12 +79,12 @@ Snipe.Results = Class.extend({
             }
             else {
                 element.innerHTML = tmpl(
-                    '<% for ( var i = 0; i < results.length; i++ ) { %>\
+                    '<% for ( var i = 0; i < length; i++ ) { %>\
                         <li data-index="<%= i %>" data-win="<%= results[i].winid %>" data-tab="<%= results[i].tabid %>"><%= results[i].title %>\
                             <em><%= results[i].url %></em>\
                         </li>\
                      <% } %>',
-                    {results: data}
+                    {results: data, length: options.maxResults || data.length}
                 );
 
                 items = element.querySelectorAll('li');

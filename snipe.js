@@ -4,6 +4,9 @@ var Snipe = Class.extend({
      * @param options (Object) - Options for the method.
      *  Eg.
      *  options: {
+     *      //Maximum number of results to display
+     *      maxResults: 5,
+     *
      *      refresh: function(value) {
      *          //Method to handle fetching new data
      *          //The value param is the value of the input field
@@ -41,7 +44,7 @@ var Snipe = Class.extend({
             form = document.createElement('form');
             field = document.createElement('input');
 
-            resultsList = new Snipe.Results(document.createElement('ul'), {select: onTabSelected});
+            resultsList = new Snipe.Results(document.createElement('ul'), {select: onTabSelected, maxResults: options.maxResults});
 
             element.className = 'snipe';
             element.appendChild(form);
