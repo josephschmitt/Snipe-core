@@ -102,16 +102,19 @@
     list-style: none !important;
     font-size: 16px !important;
     color: #666 !important;
-    padding: 10px !important;
+    padding: 10px 10px 10px 26px !important;
     border-top: 1px dotted #999 !important;
     cursor: default !important;
     display: block !important;
     text-align: left !important;
     line-height: 19px !important;
+    
+    background: no-repeat 5px 11px;
+    background-size: 16px 16px;
 }
 
 .snipe ul li.active {
-    background: white;
+    background-color: white;
 }
 
 .snipe ul li:first-child {
