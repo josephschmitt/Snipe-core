@@ -19,7 +19,7 @@
     -webkit-box-sizing: border-box !important;
     -webkit-box-pack: center !important;
 
-    -webkit-transition-property: opacity;
+    -webkit-transition-property: opacity, -webkit-transform;
     -webkit-transition-duration: 200ms !important;
     -webkit-transition-timing-function: ease-in-out !important;
 
@@ -36,6 +36,7 @@
     width: auto !important;
     position: static !important;
     -webkit-transform: none !important;
+    -webkit-transition-property: opacity;
 }
 
 .snipe.in {
@@ -66,6 +67,7 @@
     display: block !important;
 
     width: 70% !important;
+    max-width: 400px !important;
 }
 
 #snipe-popup .snipe form {
