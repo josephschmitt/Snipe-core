@@ -106,11 +106,10 @@ var Snipe = Class.extend({
             options.select.apply(null, [winid, tabid]);
             self.hide();
         }
-        
+
         function onKeyDown(e) {
             switch (e.keyCode) {
-                //Up arrow
-                case 38:
+                case KEY_UP:
                     var curIndex = resultsList.curIndex,
                         items = resultsList.element.querySelectorAll('li'),
                         length = items.length || 0,
@@ -120,8 +119,7 @@ var Snipe = Class.extend({
                     e.preventDefault();
                 break;
 
-                //Down arrow
-                case 40:
+                case KEY_DOWN:
                     var curIndex = resultsList.curIndex,
                         items = resultsList.element.querySelectorAll('li'),
                         length = items.length || 0,
@@ -131,7 +129,7 @@ var Snipe = Class.extend({
                     e.preventDefault();
                 break;
 
-                case 27: //Esc key
+                case KEY_ESC:
                     snipe.hide();
                 break;
             }
@@ -142,18 +140,18 @@ var Snipe = Class.extend({
 
             switch (e.keyCode) {
                 //Do nothing
-                case 16: //Shift key
-                case 17: //Ctrl key
-                case 18: //Option key
-                case 20: //Caps lock key
-                case 37: //Left arrow
-                case 39: //Right arrow
-                case 91: //Cmd key
-                case 36: //Home
-                case 35: //End
-                case 38: //Up arrow
-                case 40: //Down arrow
-                case 27: //Esc key
+                case KEY_SHIFT:
+                case KEY_CTRL:
+                case KEY_ALT:
+                case KEY_CAPS:
+                case KEY_ESC:
+                case KEY_END:
+                case KEY_HOME:
+                case KEY_LEFT:
+                case KEY_UP:
+                case KEY_RIGHT:
+                case KEY_DOWN:
+                case KEY_META:
                 break;
 
                 //Get results
