@@ -13,9 +13,8 @@ var Snipe = Class.extend({
      *          //Method called after refresh operation
      *      },
      *
-     *      select: function(index) {
+     *      select: function(winid, tabid) {
      *          //Method to handle what happens when an item is selected
-     *          //The index param is the index of the tab selected
      *      },
      *
      *      onDestroyed: function() {
@@ -100,8 +99,8 @@ var Snipe = Class.extend({
             }
         }
 
-        function onTabSelected(index) {
-            options.select.apply(null, [index]);
+        function onTabSelected(winid, tabid) {
+            options.select.apply(null, [winid, tabid]);
             self.hide();
         }
         
@@ -109,7 +108,7 @@ var Snipe = Class.extend({
             switch (e.keyCode) {
                 //Up arrow
                 case 38:
-                    var curIndex = /*(resultsList.curIndex === undefined || resultsList.curIndex === null) ? -1 :*/ resultsList.curIndex,
+                    var curIndex = resultsList.curIndex,
                         items = resultsList.element.querySelectorAll('li'),
                         length = items.length || 0,
                         prev = curIndex - 1 < 0 ? length - 1 : curIndex - 1;
@@ -120,7 +119,7 @@ var Snipe = Class.extend({
 
                 //Down arrow
                 case 40:
-                    var curIndex = /*(resultsList.curIndex === undefined || resultsList.curIndex === null) ? -1 :*/ resultsList.curIndex,
+                    var curIndex = resultsList.curIndex,
                         items = resultsList.element.querySelectorAll('li'),
                         length = items.length || 0,
                         next = curIndex + 1 >= length ? 0 : curIndex + 1;

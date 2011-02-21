@@ -4,9 +4,8 @@ Snipe.Results = Class.extend({
      * @param options (Object) - Options for the method.
      *  Eg.
      *  options: {
-     *      select: function(index) {
+     *      select: function(winid, tabid) {
      *          //Method to handle what happens when an item is selected
-     *          //The index param is the index of the tab selected
      *      }
      *  }
      */
@@ -78,7 +77,7 @@ Snipe.Results = Class.extend({
             else {
                 element.innerHTML = tmpl(
                     '<% for ( var i = 0; i < results.length; i++ ) { %>\
-                        <li data-tab="<%= results[i].index %>" data-index="<%= i %>"><%= results[i].title %>\
+                        <li data-index="<%= i %>" data-win="<%= results[i].winid %>" data-tab="<%= results[i].tabid %>"><%= results[i].title %>\
                             <em><%= results[i].url %></em>\
                         </li>\
                      <% } %>',
@@ -121,7 +120,7 @@ Snipe.Results = Class.extend({
                 item = curSelection;
             }
             
-            options.select.apply(null, [item.getAttribute('data-tab')]);
+            options.select.apply(null, [item.getAttribute('data-win'), item.getAttribute('data-tab')]);
         };
 
         self.destroy = function() {
