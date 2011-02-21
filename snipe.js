@@ -160,7 +160,7 @@ var Snipe = Class.extend({
                 default:
                     clearTimeout(timer);
                     timer = setTimeout(function () {
-                        if (!field || !field.value) {return false;}
+                        if (!field || (!field.value && field.value != '')) {return false;}
                         options.refresh.apply(null, [field.value]);
                     }, 100);
             }
