@@ -84,7 +84,7 @@ Snipe.Results = Class.extend({
                             <em><%= results[i].url %></em>\
                         </li>\
                      <% } %>',
-                    {results: data, length: options.maxResults || data.length}
+                    {results: data, length: Math.min(options.maxResults, data.length) || data.length}
                 );
 
                 items = element.querySelectorAll('li');
