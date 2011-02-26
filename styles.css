@@ -15,11 +15,11 @@
 .snipe {
     font-family: Georgia, sans-serif !important;
 
-    display: -webkit-box;
+    display: -webkit-box !important;
     -webkit-box-sizing: border-box !important;
     -webkit-box-pack: center !important;
 
-    -webkit-transition-property: opacity, -webkit-transform;
+    -webkit-transition-property: opacity, -webkit-transform !important;
     -webkit-transition-duration: 200ms !important;
     -webkit-transition-timing-function: ease-in-out !important;
 
@@ -45,7 +45,7 @@
 .snipe .wrapper {
     width: 70% !important;
     max-width: 400px !important;
-    position: relative;
+    position: relative !important;
 }
 
 .snipe .wrapper > form,
@@ -84,16 +84,16 @@
     width: 18px !important;
     height: 17px !important;
     background: transparent url('gears.png') no-repeat center center !important;
-    padding: 2px;
-    opacity: 0.5;
+    padding: 2px !important;
+    opacity: 0.5 !important;
     
-    position: absolute;
-    top: 12px;
-    right: 12px;
+    position: absolute !important;
+    top: 12px !important;
+    right: 12px !important;
 }
 
 .snipe .input a:hover {
-    opacity: 0.85;
+    opacity: 0.85 !important;
 }
 
 
@@ -121,12 +121,12 @@
     text-align: left !important;
     line-height: 19px !important;
     
-    background: no-repeat 5px 11px;
-    background-size: 16px 16px;
+    background: no-repeat 5px 11px !important;
+    background-size: 16px 16px !important;
 }
 
 .snipe ul li.active {
-    background-color: white;
+    background-color: white !important;
 }
 
 .snipe ul li:first-child {
@@ -151,14 +151,14 @@
 .snipe .settings {
     -webkit-transform: rotateY(-180deg) !important;
     font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif' !important;
-    font-weight: normal;
-    position: absolute;
-    top: 0;
+    font-weight: normal !important;
+    position: absolute !important;
+    top: 0 !important;
 }
 
 .snipe .settings form {
     font-size: 22px !important;
-    color: #fff;
+    color: #fff !important;
 }
 
 .snipe.settings .input {
@@ -174,7 +174,7 @@
     Overrides for when in Chrome popup window
 */
 #snipe-popup {
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 #snipe-popup .snipe {
