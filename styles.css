@@ -32,29 +32,14 @@
     opacity: 0 !important;
 }
 
-#snipe-popup .snipe {
-    width: auto !important;
-    position: static !important;
-    -webkit-transform: none !important;
-    -webkit-transition-property: opacity;
-}
-
 .snipe.in {
     -webkit-transform: translateY(0) !important;
     opacity: 1 !important;
 }
 
-#snipe-popup .snipe.in {
-    -webkit-transform: none !important;
-}
-
 .snipe.out {
     -webkit-transform: translateY(-25px) !important;
     opacity: 0 !important;
-}
-
-#snipe-popup .snipe.out {
-    -webkit-transform: none !important;
 }
 
 .snipe form {
@@ -68,10 +53,6 @@
 
     width: 70% !important;
     max-width: 400px !important;
-}
-
-#snipe-popup .snipe form {
-    width: 400px !important;
 }
 
 .snipe input {
@@ -130,4 +111,30 @@
     white-space: nowrap !important;
     background: transparent !important;
     border: 0 !important;
+}
+
+/*
+    Overrides for when in Chrome popup window
+*/
+#snipe-popup {
+    overflow: hidden;
+}
+
+#snipe-popup .snipe {
+    width: auto !important;
+    position: static !important;
+    -webkit-transform: none !important;
+    -webkit-transition-property: opacity !important;
+}
+
+#snipe-popup .snipe.in {
+    -webkit-transform: none !important;
+}
+
+#snipe-popup .snipe.out {
+    -webkit-transform: none !important;
+}
+
+#snipe-popup .snipe form {
+    width: 400px !important;
 }
