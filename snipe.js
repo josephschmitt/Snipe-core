@@ -28,10 +28,13 @@ var Snipe = Class.extend({
     init: function(options) {
         var self = this,
 
-            element,
-            form,
-            field,
-            resultsList,
+            element = document.createElement('div'),
+            wrapper = document.createElement('div'),
+            form = document.createElement('form'),
+            settingsBtn = document.createElement('a'),
+            field = document.createElement('input'),
+            resultsList = new Snipe.Results(document.createElement('ul'), {select: onTabSelected, maxResults: options.maxResults}),
+            settings = new Snipe.Settings(document.createElement('div')),
 
             timer;
 
@@ -40,14 +43,16 @@ var Snipe = Class.extend({
 // PRIVATE METHODS ____________________________________________________________
 
         function create() {
-            element = document.createElement('div');
-            form = document.createElement('form');
-            field = document.createElement('input');
-
-            resultsList = new Snipe.Results(document.createElement('ul'), {select: onTabSelected, maxResults: options.maxResults});
-
             element.className = 'snipe';
-            element.appendChild(form);
+            wrapper.className = 'wrapper';
+            form.className = 'input'
+            
+            element.appendChild(wrapper);
+            
+            wrapper.appendChild(form);
+            wrapper.appendChild(settings.element);
+            
+            form.appendChild(settingsBtn);
             form.appendChild(field);
             form.appendChild(resultsList.element);
 
@@ -55,10 +60,13 @@ var Snipe = Class.extend({
         }
 
         function addEvents() {
-            element.addEventListener('webkitTransitionEnd', onTransitionEnd, false );
+            element.addEventListener('webkitTransitionEnd', onTransitionEnd, false);
             field.addEventListener('keyup', onKeyUp, false);
             field.addEventListener('keydown', onKeyDown, false);
             form.addEventListener('submit', onFormSubmit, false);
+            
+            //Bring up the settings window
+            settingsBtn.addEventListener('click', onSettings, false);
 
             //Hide Snipe when the window loses focus
             window.addEventListener('blur', onWindowBlur);
@@ -66,18 +74,25 @@ var Snipe = Class.extend({
             //Hide snipe when clicking outside the snipe window
             window.addEventListener('click', onWindowClick);
         }
+        
+        function removeEvents() {
+            element.removeEventListener('webkitTransitionEnd', onTransitionEnd);
+            field.removeEventListener('keyup', onKeyUp);
+            field.removeEventListener('keydown', onKeyDown);
+            form.removeEventListener('submit', onFormSubmit);
+            settingsBtn.removeEventListener('click', onSettings)
+            
+            window.removeEventListener('blur', onWindowBlur);
+            window.removeEventListener('click', onWindowClick);
+        }
 
         function destroy() {
             resultsList.destroy();
             element.parentNode.removeChild(element);
-
-            window.removeEventListener('blur', onWindowBlur);
-            window.removeEventListener('click', onWindowClick);
-
-            element = null;
-            form = null;
-            field = null;
-            resultsList = null;
+            
+            removeEvents();
+            
+            removeClass(element, 'settings');
 
             if (options.onDestroyed) {
                 options.onDestroyed();
@@ -168,6 +183,15 @@ var Snipe = Class.extend({
             resultsList.activateResult();
             e.preventDefault();
         }
+        
+        function onSettings(e) {
+            if (hasClass(element, 'settings')) {
+                removeClass(element, 'settings');
+            }
+            else {
+                addClass(element, 'settings');
+            }
+        }
 
         function onWindowBlur(e) {
             self.hide();
@@ -198,7 +222,7 @@ var Snipe = Class.extend({
         };
 
         self.toggle = function() {
-            if (element) {
+            if (hasClass(element, 'in')) {
                 self.hide();
             }
             else {
