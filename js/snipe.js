@@ -239,8 +239,8 @@ var Snipe = Class.extend({
         };
 
         self.hide = function() {
-            // self.refresh();
-            // removeClass(element, 'in');
+            self.refresh();
+            removeClass(element, 'in');
         };
 
         self.toggle = function() {
