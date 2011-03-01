@@ -65,6 +65,8 @@
 
 .snipe .input {
     background: rgba(0, 0, 0, 0.6) !important;
+    position: relative !important;
+    z-index: 1;
 }
 
 .snipe input {
@@ -309,6 +311,6 @@
     -webkit-transform: none !important;
 }
 
-#snipe-popup .snipe .input {
+#snipe-popup .snipe .wrapper {
     width: 400px !important;
 }
