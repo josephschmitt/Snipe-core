@@ -15,9 +15,9 @@ var KEY_SHIFT   = 16,
     //List of supported keycodes
     KEYMAP = {
         //Modifier keys
-        16: {id: 16, name: 'Shift'},
-        17: {id: 17, name: 'Ctrl'},
-        18: {id: 18, name: 'Alt'},
+        16: {id: 16, name: 'Shift', modifier: 'shiftKey'},
+        17: {id: 17, name: 'Ctrl', modifier: 'ctrlKey'},
+        18: {id: 18, name: 'Alt', modifier: 'altKey'},
         
         32: {id: 32, name: 'Space'},
         

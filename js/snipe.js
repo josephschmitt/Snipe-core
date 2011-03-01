@@ -23,6 +23,10 @@ var Snipe = Class.extend({
      *      onDestroyed: function() {
      *          //Method to handle what happens when snipe is destroyed
      *      }
+     *      
+     *      onSettingsChanged: function(settings) {
+     *          //Method to handle what happens when snipe's settings are updated
+     *      }
      *  }
      */
     init: function(options) {
@@ -33,8 +37,14 @@ var Snipe = Class.extend({
             form = document.createElement('form'),
             settingsBtn = document.createElement('button'),
             field = document.createElement('input'),
-            resultsList = new Snipe.Results(document.createElement('ul'), {select: onTabSelected, maxResults: options.maxResults}),
-            settings = new Snipe.Settings(document.createElement('form')),
+            resultsList = new Snipe.Results(document.createElement('ul'), {
+                select: onTabSelected, 
+                maxResults: options.maxResults
+            }),
+            settings = new Snipe.Settings(document.createElement('form'), {
+                change: onSettingsChanged,
+                submit: onSettings
+            }),
 
             timer;
 
@@ -118,8 +128,16 @@ var Snipe = Class.extend({
         }
 
         function onTabSelected(winid, tabid) {
-            options.select.apply(null, [winid, tabid]);
+            if (options.select) {
+                options.select.apply(null, [winid, tabid]);
+            }
             self.hide();
+        }
+        
+        function onSettingsChanged(settings) {
+            if (options.onSettingsChanged) {
+                options.onSettingsChanged.apply(null, [settings]);
+            }
         }
 
         function onKeyDown(e) {
@@ -239,6 +257,32 @@ var Snipe = Class.extend({
             if (options.onRefreshed) {
                 options.onRefreshed(element.clientHeight);
             }
+        };
+        
+        self.updateSettings = function(newSettings) {
+            settings.set(newSettings);
+        };
+        
+        self.matchesShortcut = function(e) {
+            var mods = settings.get().shortcut.modifiers,
+                key = settings.get().shortcut.key;
+            
+            function matchesMods() {
+                for (var i = 0, length = mods.length, modKey, matches = true; i < length; i++) {
+                    modKey = mods[i].modifier;
+                    if (!e[modKey]) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            }
+            
+            if ( matchesMods() && e.keyCode == key.id) {
+                return true;
+            }
+            
+            return false;
         };
     }
 });

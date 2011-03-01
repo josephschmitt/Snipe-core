@@ -182,27 +182,23 @@
     font-size: 0.9em !important
 }
 
-.snipe .settings span {
+.snipe .settings .shortcut-field {
     position: relative !important;
     display: block !important;
     -webkit-box-flex: 1 !important;
 }
 
-.snipe .settings small {
-    font-size: 11px !important;
-    margin-top: 20px !important;
-    display: block !important;
-    text-align: right !important;
+.snipe .settings fieldgroup.done {
+    display: -webkit-box !important;
+    -webkit-box-align: end !important;
+    margin-bottom: 0 !important;
 }
 
-
-/*
-    Shortcut Field
-*/
-.snipe .settings input {
-    border: 0 !important;
-    font-size: 16px !important;
-    -webkit-border-radius: 5px !important;
+.snipe .settings .done small {
+    font-size: 11px !important;
+    text-align: left !important;
+    display: block !important;
+    -webkit-box-flex: 1 !important;
 }
 
 .snipe .settings a,
@@ -212,46 +208,15 @@
     border: 0 !important;
 }
 
-.snipe .settings button {
-    position: absolute !important;
-    top: 50% !important;
-    right: 5px !important;
-    margin-top: -9px !important;
-    text-indent: -3000px !important;
-    width: 18px !important;
-    height: 18px !important;
-
+.snipe .settings input[type="button"].done {
+    -webkit-appearance: push-button  !important;
+    width: auto !important;
+    font-size: 12px !important;
+    font-weight: bold !important;
+    background: #09A7B5 !important;
+    padding: 5px 9px !important;
+    color: #fff !important;
     border: 0 !important;
-
-    -webkit-appearance: none !important;
-}
-
-.snipe .settings button.clear {
-    visibility: visible !important;
-    background: #bfbfbf !important;
-    -webkit-mask-box-image: url('../images/close-btn.png') !important;
-}
-
-.snipe .settings button.clear:hover {
-    background: #a6a6a6 !important;
-}
-
-.snipe .settings button.revert {
-    background: #4572bc !important;
-    -webkit-mask-box-image: url('../images/revert-btn.png') !important;
-}
-
-.snipe .settings button.revert:hover {
-    background: #4572bc !important;
-}
-
-.snipe .settings span.edit input {
-/*    border: 3px solid #4572bc !important;*/
-}
-
-.snipe .settings span.edit .clear,
-.snipe .settings span .revert {
-    display: none !important;
 }
 
 .snipe .settings span .clear,
@@ -265,6 +230,60 @@
 
 .snipe.settings .settings {
     -webkit-transform: rotateY(0deg) !important;
+}
+
+
+/*
+    Shortcut Field
+*/
+.snipe .settings input {
+    font-size: 16px !important;
+    -webkit-border-radius: 5px !important;
+    border: 2px solid #333 !important;
+    background-clip: padding-box;
+}
+
+.snipe .settings .shortcut-field button {
+    position: absolute !important;
+    top: 50% !important;
+    right: 5px !important;
+    margin-top: -9px !important;
+    text-indent: -3000px !important;
+    width: 18px !important;
+    height: 18px !important;
+    visibility: visible !important;
+
+    border: 0 !important;
+
+    -webkit-appearance: none !important;
+}
+
+.snipe .settings .shortcut-field button.clear {
+    background: #bfbfbf !important;
+    -webkit-mask-box-image: url('../images/close-btn.png') !important;
+}
+
+.snipe .settings .shortcut-field button.clear:hover {
+    background: #a6a6a6 !important;
+}
+
+.snipe .settings .shortcut-field button.revert {
+    background: #4572bc !important;
+    -webkit-mask-box-image: url('../images/revert-btn.png') !important;
+}
+
+.snipe .settings .shortcut-field button.revert:hover {
+    background: #4572bc !important;
+}
+
+.snipe .settings .shortcut-field.edit input {
+    border: 2px solid #4572bc !important;
+}
+
+.snipe .settings .shortcut-field.edit .clear,
+.snipe .settings .shortcut-field.empty .clear,
+.snipe .settings .shortcut-field .revert {
+    display: none !important;
 }
 
 

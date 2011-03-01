@@ -21,7 +21,9 @@ var ShortcutField = Class.extend({
         element.appendChild(clearBtn);
         element.appendChild(revertBtn);
         
-        setInstruction('Click to record shortcut');
+        element.setAttribute('class', 'shortcut-field');
+        
+        exitEditMode();
 
 
 // PRIVATE METHODS ____________________________________________________________
@@ -41,33 +43,32 @@ var ShortcutField = Class.extend({
         }
         
         function exitEditMode() {
-            if (!hasClass(element, 'edit')) {
-                return false;
-            }
-            
             removeKeyEvents();
-            removeClass(element, 'edit');
 
             if (setKey) {
-                if (options.update) {
-                    options.update.apply(null, []);
+                removeClass(element, 'empty');
+                
+                if (options.update && hasClass(element, 'edit')) {
+                    options.update.apply(null, [setKey, setModifiers]);
                 }
+            }
+            else {
+                addClass(element, 'empty');
             }
             
             setInstruction('Click to record shortcut');
+            removeClass(element, 'edit');
         }
 
         function addKeyEvents() {
             window.addEventListener('keydown', onKeyDown)
             window.addEventListener('keyup', onKeyUp);
             window.addEventListener('click', onClick);
-            // field.addEventListener('blur', exitEditMode);
         }
 
         function removeKeyEvents() {
             window.removeEventListener('keydown', onKeyDown)
             window.removeEventListener('keyup', onKeyUp);
-            // field.removeEventListener('blur', exitEditMode);
         }
         
         function setInstruction(text) {
@@ -102,7 +103,6 @@ var ShortcutField = Class.extend({
             }
 
             updateField(key, modifiers);
-            setCombo(key, modifiers, e);
 
             e.preventDefault();
         }
@@ -119,6 +119,8 @@ var ShortcutField = Class.extend({
             }
 
             field.value = text;
+            
+            setCombo(key, modifiers);
         }
 
         function setCombo(key, modifiers) {
@@ -130,9 +132,12 @@ var ShortcutField = Class.extend({
             }
         }
         
-        function saveCombo(key, modifiers) {
-            
-        }
+        
+// PRIVILEGED METHODS _________________________________________________________
+        
+        self.set = function(key, modifiers) {
+            updateField(key, modifiers);
+        };
 
 
 // EVENT SUBSCRIPTIONS ________________________________________________________
@@ -143,7 +148,10 @@ var ShortcutField = Class.extend({
             field.blur();
         });
         clearBtn.addEventListener('click', function(e) {
-            enterEditMode();
+            field.value = '';
+            setKey = null;
+            
+            exitEditMode();
         });
         revertBtn.addEventListener('mouseover', function(e) {
             setInstruction('Use old shortcut');
@@ -164,13 +172,11 @@ var ShortcutField = Class.extend({
         }
 
         function onKeyUp(e) {
-            // field.blur();
             if (setKey) {
-                exitEditMode();
+                return exitEditMode();
             }
-            else {
-                parseKeys(e.keyCode, e);
-            }
+            
+            parseKeys(e.keyCode, e);
         }
         
         function onClick(e) {
