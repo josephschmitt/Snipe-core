@@ -129,9 +129,6 @@ Snipe.Results = Class.extend({
 
         self.destroy = function() {
             element.parentNode.removeChild(element);
-
-            element = null;
-            items = null;
         };
     }
 });
