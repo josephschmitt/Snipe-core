@@ -6,9 +6,12 @@ var ShortcutField = Class.extend({
             field = document.createElement('input'),
             clearBtn = document.createElement('button'),
             revertBtn = document.createElement('button'),
-
+            
+            setKey,
             setModifiers,
-            setKey;
+            
+            savedKey,
+            savedModifiers;
 
         self.element = element;
 
@@ -48,8 +51,11 @@ var ShortcutField = Class.extend({
             if (setKey) {
                 removeClass(element, 'empty');
                 
+                savedKey = setKey;
+                savedModifiers = Array.prototype.slice.call(setModifiers);
+                
                 if (options.update && hasClass(element, 'edit')) {
-                    options.update.apply(null, [setKey, setModifiers]);
+                    options.update.apply(null, [savedKey, savedModifiers]);
                 }
             }
             else {
@@ -147,17 +153,24 @@ var ShortcutField = Class.extend({
             enterEditMode();
             field.blur();
         });
+        
         clearBtn.addEventListener('click', function(e) {
             field.value = '';
             setKey = null;
             
             exitEditMode();
         });
+        
         revertBtn.addEventListener('mouseover', function(e) {
             setInstruction('Use old shortcut');
         });
+        
         revertBtn.addEventListener('mouseout', function(e) {
             setInstruction('Type shortcut');
+        });
+        
+        revertBtn.addEventListener('click', function(e) {
+            updateField(savedKey, Array.prototype.slice.call(savedModifiers))
         });
 
 
