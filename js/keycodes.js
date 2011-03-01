@@ -1,0 +1,83 @@
+var KEY_SHIFT   = 16,
+    KEY_CTRL    = 17,
+    KEY_ALT     = 18,
+    KEY_CAPS    = 20,
+    KEY_ESC     = 27,
+    KEY_SPACE   = 32,
+    KEY_END     = 35,
+    KEY_HOME    = 36,
+    KEY_LEFT    = 37,
+    KEY_UP      = 38,
+    KEY_RIGHT   = 39,
+    KEY_DOWN    = 40,
+    KEY_META    = 91,
+    
+    //List of supported keycodes
+    KEYMAP = {
+        //Modifier keys
+        16: {id: 16, name: 'Shift'},
+        17: {id: 17, name: 'Ctrl'},
+        18: {id: 18, name: 'Alt'},
+        
+        32: {id: 32, name: 'Space'},
+        
+        //Numbers
+        48: {id: 48, name: '0'},
+        49: {id: 49, name: '1'},
+        50: {id: 50, name: '2'},
+        51: {id: 51, name: '3'},
+        52: {id: 52, name: '4'},
+        53: {id: 53, name: '5'},
+        54: {id: 54, name: '6'},
+        55: {id: 55, name: '7'},
+        56: {id: 56, name: '8'},
+        57: {id: 57, name: '9'},
+        
+        //Letters
+        65: {id: 65, name: 'A'},
+        66: {id: 66, name: 'B'},
+        67: {id: 67, name: 'C'},
+        68: {id: 68, name: 'D'},
+        69: {id: 69, name: 'E'},
+        70: {id: 70, name: 'F'},
+        71: {id: 71, name: 'G'},
+        72: {id: 72, name: 'H'},
+        73: {id: 73, name: 'I'},
+        74: {id: 74, name: 'J'},
+        75: {id: 75, name: 'K'},
+        76: {id: 76, name: 'L'},
+        77: {id: 77, name: 'M'},
+        78: {id: 78, name: 'N'},
+        79: {id: 79, name: 'O'},
+        80: {id: 80, name: 'P'},
+        81: {id: 81, name: 'Q'},
+        82: {id: 82, name: 'R'},
+        83: {id: 83, name: 'S'},
+        84: {id: 84, name: 'T'},
+        85: {id: 85, name: 'U'},
+        86: {id: 86, name: 'V'},
+        87: {id: 87, name: 'W'},
+        88: {id: 88, name: 'X'},
+        89: {id: 89, name: 'Y'},
+        90: {id: 90, name: 'Z'},
+        
+        //Math
+        106: {id: 106, name: '*'},
+        107: {id: 107, name: '+'},
+        109: {id: 109, name: '-'},
+        110: {id: 110, name: '.'},
+        111: {id: 111, name: '/'},
+        
+        //Other
+        186: {id: 186, name: ';'},
+        187: {id: 187, name: '='},
+        188: {id: 188, name: ','},
+        189: {id: 189, name: '-'},
+        190: {id: 190, name: '.'},
+        191: {id: 191, name: '/'},
+        192: {id: 192, name: '`'},
+        219: {id: 219, name: '['},
+        220: {id: 220, name: '\\'},
+        221: {id: 221, name: ']'},
+        222: {id: 222, name: "'"}
+    };

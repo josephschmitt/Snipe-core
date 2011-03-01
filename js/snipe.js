@@ -31,10 +31,10 @@ var Snipe = Class.extend({
             element = document.createElement('div'),
             wrapper = document.createElement('div'),
             form = document.createElement('form'),
-            settingsBtn = document.createElement('a'),
+            settingsBtn = document.createElement('button'),
             field = document.createElement('input'),
             resultsList = new Snipe.Results(document.createElement('ul'), {select: onTabSelected, maxResults: options.maxResults}),
-            settings = new Snipe.Settings(document.createElement('div')),
+            settings = new Snipe.Settings(document.createElement('form')),
 
             timer;
 
@@ -46,12 +46,12 @@ var Snipe = Class.extend({
             element.className = 'snipe';
             wrapper.className = 'wrapper';
             form.className = 'input'
-            
+
             element.appendChild(wrapper);
-            
+
             wrapper.appendChild(form);
             wrapper.appendChild(settings.element);
-            
+
             form.appendChild(settingsBtn);
             form.appendChild(field);
             form.appendChild(resultsList.element);
@@ -64,7 +64,7 @@ var Snipe = Class.extend({
             field.addEventListener('keyup', onKeyUp, false);
             field.addEventListener('keydown', onKeyDown, false);
             form.addEventListener('submit', onFormSubmit, false);
-            
+
             //Bring up the settings window
             settingsBtn.addEventListener('click', onSettings, false);
 
@@ -74,14 +74,14 @@ var Snipe = Class.extend({
             //Hide snipe when clicking outside the snipe window
             window.addEventListener('click', onWindowClick);
         }
-        
+
         function removeEvents() {
             element.removeEventListener('webkitTransitionEnd', onTransitionEnd);
             field.removeEventListener('keyup', onKeyUp);
             field.removeEventListener('keydown', onKeyDown);
             form.removeEventListener('submit', onFormSubmit);
             settingsBtn.removeEventListener('click', onSettings)
-            
+
             window.removeEventListener('blur', onWindowBlur);
             window.removeEventListener('click', onWindowClick);
         }
@@ -89,9 +89,9 @@ var Snipe = Class.extend({
         function destroy() {
             resultsList.destroy();
             element.parentNode.removeChild(element);
-            
+
             removeEvents();
-            
+
             removeClass(element, 'settings');
 
             if (options.onDestroyed) {
@@ -183,7 +183,7 @@ var Snipe = Class.extend({
             resultsList.activateResult();
             e.preventDefault();
         }
-        
+
         function onSettings(e) {
             if (hasClass(element, 'settings')) {
                 removeClass(element, 'settings');
@@ -191,6 +191,8 @@ var Snipe = Class.extend({
             else {
                 addClass(element, 'settings');
             }
+
+            e.preventDefault();
         }
 
         function onWindowBlur(e) {
@@ -217,8 +219,8 @@ var Snipe = Class.extend({
         };
 
         self.hide = function() {
-            self.refresh();
-            removeClass(element, 'in');
+            // self.refresh();
+            // removeClass(element, 'in');
         };
 
         self.toggle = function() {

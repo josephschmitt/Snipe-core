@@ -18,6 +18,7 @@
     display: -webkit-box !important;
     -webkit-box-sizing: border-box !important;
     -webkit-box-pack: center !important;
+    -webkit-perspective: 1000;
 
     -webkit-transition-property: opacity, -webkit-transform !important;
     -webkit-transition-duration: 200ms !important;
@@ -48,51 +49,57 @@
     position: relative !important;
 }
 
-.snipe .wrapper > form,
-.snipe .wrapper > div {
+.snipe .wrapper > form {
     -webkit-border-radius: 5px !important;
     -webkit-box-sizing: border-box !important;
     -webkit-box-shadow: 0 2px 10px rgba(0, 0, 0, 0.75) !important;
     -webkit-backface-visibility: hidden !important;
-    
+
     -webkit-transition: -webkit-transform 300ms ease-out !important;
 
-    background: rgba(0, 0, 0, 0.6) !important;
     padding: 10px !important;
     display: block !important;
-    
+
     width: 100% !important;
+}
+
+.snipe .input {
+    background: rgba(0, 0, 0, 0.6) !important;
 }
 
 .snipe input {
     -webkit-box-sizing: border-box !important;
 
     font-family: inherit !important;
-    width: 100% !important;
-    font-size: 22px !important;
     border: 1px solid black !important;
-    padding: 5px 5px 5px 35px !important;
+    padding: 5px !important;
     margin: 0 !important;
     outline: none !important;
     display: block !important;
-    
-    background: #fff url('bird.png') no-repeat 3px center !important;
+    width: 100% !important;
 }
 
-.snipe .input a {
+.snipe .input input {
+    font-size: 22px !important;
+    padding-left: 35px !important;
+    background: #fff url('../images/bird.png') no-repeat 3px center !important;
+}
+
+.snipe .input button {
     display: block !important;
     width: 18px !important;
     height: 17px !important;
-    background: transparent url('gears.png') no-repeat center center !important;
+    background: transparent url('../images/gears.png') no-repeat center center !important;
     padding: 2px !important;
     opacity: 0.5 !important;
-    
+    border: 0 !important;
+
     position: absolute !important;
     top: 12px !important;
     right: 12px !important;
 }
 
-.snipe .input a:hover {
+.snipe .input button:hover {
     opacity: 0.85 !important;
 }
 
@@ -120,7 +127,7 @@
     display: block !important;
     text-align: left !important;
     line-height: 19px !important;
-    
+
     background: no-repeat 5px 11px !important;
     background-size: 16px 16px !important;
 }
@@ -148,17 +155,108 @@
 /*
     Settings
 */
-.snipe .settings {
-    -webkit-transform: rotateY(-180deg) !important;
-    font-family: 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif' !important;
+.snipe .wrapper > .settings {
+    -webkit-transform: rotateY(180deg) !important;
+    font-size: 16px !important;
+/*    color: rgba(255, 255, 255, 0.85) !important;*/
+    color: #757575 !important;
+    text-shadow: #111 -1px -1px 0px !important;
+    background: url('../images/bg.png') 0 0;
     font-weight: normal !important;
     position: absolute !important;
     top: 0 !important;
 }
 
-.snipe .settings form {
-    font-size: 22px !important;
-    color: #fff !important;
+.snipe .settings fieldgroup {
+    margin-bottom: 10px !important;
+    display: block !important;
+}
+
+.snipe .settings label {
+    display: block !important;
+    margin-bottom: 7px !important;
+}
+
+.snipe .settings label em {
+    color: rgba(255, 255, 255, 0.5) !important;
+    font-size: 0.9em !important
+}
+
+.snipe .settings span {
+    position: relative !important;
+    display: block !important;
+    -webkit-box-flex: 1 !important;
+}
+
+.snipe .settings small {
+    font-size: 11px !important;
+    margin-top: 20px !important;
+    display: block !important;
+    text-align: right !important;
+}
+
+
+/*
+    Shortcut Field
+*/
+.snipe .settings input {
+    border: 0 !important;
+    font-size: 16px !important;
+    -webkit-border-radius: 5px !important;
+}
+
+.snipe .settings a,
+.snipe .settings a:link,
+.snipe .settings a:hover {
+    color: #09A7B5 !important;
+    border: 0 !important;
+}
+
+.snipe .settings button {
+    position: absolute !important;
+    top: 50% !important;
+    right: 5px !important;
+    margin-top: -9px !important;
+    text-indent: -3000px !important;
+    width: 18px !important;
+    height: 18px !important;
+
+    border: 0 !important;
+
+    -webkit-appearance: none !important;
+}
+
+.snipe .settings button.clear {
+    visibility: visible !important;
+    background: #bfbfbf !important;
+    -webkit-mask-box-image: url('../images/close-btn.png') !important;
+}
+
+.snipe .settings button.clear:hover {
+    background: #a6a6a6 !important;
+}
+
+.snipe .settings button.revert {
+    background: #4572bc !important;
+    -webkit-mask-box-image: url('../images/revert-btn.png') !important;
+}
+
+.snipe .settings button.revert:hover {
+    background: #4572bc !important;
+}
+
+.snipe .settings span.edit input {
+/*    border: 3px solid #4572bc !important;*/
+}
+
+.snipe .settings span.edit .clear,
+.snipe .settings span .revert {
+    display: none !important;
+}
+
+.snipe .settings span .clear,
+.snipe .settings span.edit .revert {
+    display: block !important;
 }
 
 .snipe.settings .input {
