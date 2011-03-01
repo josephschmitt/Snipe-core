@@ -53,9 +53,9 @@ var Snipe = Class.extend({
 // PRIVATE METHODS ____________________________________________________________
 
         function create() {
-            element.className = 'snipe';
-            wrapper.className = 'wrapper';
-            form.className = 'input'
+            addClass(element, 'snipe');
+            addClass(wrapper, 'wrapper');
+            addClass(form, 'input');
 
             element.appendChild(wrapper);
 
@@ -266,6 +266,10 @@ var Snipe = Class.extend({
         };
         
         self.matchesShortcut = function(e) {
+            if (!settings || !settings.get()) {
+                return false;
+            }
+            
             var mods = settings.get().shortcut.modifiers,
                 key = settings.get().shortcut.key;
             
@@ -286,5 +290,15 @@ var Snipe = Class.extend({
             
             return false;
         };
+        
+        
+// CONSTRUCTOR ________________________________________________________________
+        
+        //Sucks to do UA detection, but Chrome won't support webkitBackfaceVisibility
+        //until version 11, and this is the easiest way to detect that (no real feature-
+        //detection for that CSS property).
+        if (BrowserDetect.browser == 'Chrome' && BrowserDetect.version < 11) {
+            addClass(element, 'anim2d');
+        }
     }
 });

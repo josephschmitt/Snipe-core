@@ -1,5 +1,5 @@
 /* CSS RESET */
-.snipe, .snipe form, .snipe input, .snipe ul, .snipe li, .snipe div, .snipe em {
+.snipe *, .snipe div, .snipe, .snipe form, .snipe input, .snipe ul, .snipe li, .snipe div, .snipe em {
     margin: 0 !important;
     padding: 0 !important;
     border: 0 !important;
@@ -160,7 +160,6 @@
 .snipe .wrapper > .settings {
     -webkit-transform: rotateY(180deg) !important;
     font-size: 16px !important;
-/*    color: rgba(255, 255, 255, 0.85) !important;*/
     color: #757575 !important;
     text-shadow: #111 -1px -1px 0px !important;
     background: url('../images/bg.png') 0 0;
@@ -286,6 +285,30 @@
 .snipe .settings .shortcut-field.empty .clear,
 .snipe .settings .shortcut-field .revert {
     display: none !important;
+}
+
+
+/*
+    Overrides if 3D transforms aren't supported
+*/
+.snipe.anim2d .wrapper > form {
+    -webkit-transition: opacity 150ms ease-out !important;
+}
+
+.snipe.anim2d .wrapper > .settings {
+    opacity: 0 !important;
+}
+
+.snipe.anim2d.settings .wrapper > .settings {
+    -webkit-transform: rotateY(0deg) !important;
+    opacity: 1 !important;
+    z-index: 1;
+}
+
+.snipe.anim2d.settings .input {
+    -webkit-transform: rotateY(0deg) !important;
+    opacity: 0 !important;
+    z-index: 0;
 }
 
 
