@@ -209,8 +209,10 @@ var Snipe = Class.extend({
             else {
                 addClass(element, 'settings');
             }
-
-            e.preventDefault();
+            
+            if (e && e.preventDefault) {
+                e.preventDefault();
+            }
         }
 
         function onWindowBlur(e) {
