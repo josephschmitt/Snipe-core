@@ -35,7 +35,7 @@ var Snipe = Class.extend({
             element = document.createElement('div'),
             wrapper = document.createElement('div'),
             form = document.createElement('form'),
-            settingsBtn = document.createElement('button'),
+            settingsBtn = document.createElement('a'),
             field = document.createElement('input'),
             resultsList = new Snipe.Results(document.createElement('ul'), {
                 select: onTabSelected, 
@@ -56,6 +56,7 @@ var Snipe = Class.extend({
             addClass(element, 'snipe');
             addClass(wrapper, 'wrapper');
             addClass(form, 'input');
+            addClass(settingsBtn, 'settingsBtn');
 
             element.appendChild(wrapper);
 
@@ -99,6 +100,7 @@ var Snipe = Class.extend({
         function destroy() {
             resultsList.destroy();
             element.parentNode.removeChild(element);
+            field.value = '';
 
             removeEvents();
 
@@ -203,6 +205,8 @@ var Snipe = Class.extend({
         }
 
         function onSettings(e) {
+            console.log('Snipe.onSettings', e);
+            
             if (hasClass(element, 'settings')) {
                 removeClass(element, 'settings');
             }

@@ -87,7 +87,7 @@
     background: #fff url('../images/bird.png') no-repeat 3px center !important;
 }
 
-.snipe .input button {
+.snipe .input .settingsBtn {
     display: block !important;
     width: 18px !important;
     height: 17px !important;
@@ -101,7 +101,7 @@
     right: 12px !important;
 }
 
-.snipe .input button:hover {
+.snipe .input .settingsBtn:hover {
     opacity: 0.85 !important;
 }
 
