@@ -176,7 +176,7 @@
     font-size: 16px !important;
     color: #757575 !important;
     text-shadow: #111 -1px -1px 0px !important;
-    background: url('../images/bg.png') 0 0 repeat-x, url('../images/bg-flat.png') 0 0 !important;
+    background: url('../images/bg.jpg') 0 0 repeat-x, url('../images/bg-flat.jpg') 0 0 !important;
     font-weight: normal !important;
     -webkit-box-sizing: border-box !important;
 }
