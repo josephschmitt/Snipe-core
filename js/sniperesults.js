@@ -80,7 +80,7 @@ Snipe.Results = Class.extend({
             else {
                 element.innerHTML = tmpl(
                     '<% for ( var i = 0; i < length; i++ ) { %>\
-                        <li style="background-image:url(<%= results[i].favicon %>)" data-index="<%= i %>" data-win="<%= results[i].winid %>" data-tab="<%= results[i].tabid %>">\
+                        <li style="background-image:url(<%= results[i].favicon %>) !important;" data-index="<%= i %>" data-win="<%= results[i].winid %>" data-tab="<%= results[i].tabid %>">\
                             <%= results[i].title %>\
                             <em><%= results[i].url %></em>\
                         </li>\

@@ -205,8 +205,6 @@ var Snipe = Class.extend({
         }
 
         function onSettings(e) {
-            console.log('Snipe.onSettings', e);
-            
             if (hasClass(element, 'settings')) {
                 removeClass(element, 'settings');
             }

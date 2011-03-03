@@ -133,7 +133,8 @@
     text-align: left !important;
     line-height: 19px !important;
 
-    background: no-repeat 5px 11px !important;
+    background-repeat: no-repeat !important;
+    background-position: 5px 11px !important;
     background-size: 16px 16px !important;
 }
 
