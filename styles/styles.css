@@ -34,6 +34,7 @@
 .snipe .wrapper {
     width: 70% !important;
     max-width: 400px !important;
+    min-height: 60px !important;
     position: relative !important;
     top: 20px !important;
     opacity: 0 !important;
