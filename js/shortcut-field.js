@@ -16,15 +16,14 @@ var ShortcutField = Class.extend({
         self.element = element;
 
         field.setAttribute('type', 'text');
-
+        
+        addClass(element, 'shortcut-field')
         addClass(clearBtn, 'clear');
         addClass(revertBtn, 'revert');
 
         element.appendChild(field);
         element.appendChild(clearBtn);
         element.appendChild(revertBtn);
-        
-        element.setAttribute('class', 'shortcut-field');
         
         exitEditMode();
 

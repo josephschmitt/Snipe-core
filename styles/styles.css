@@ -26,6 +26,11 @@
     top: 0 !important;
 }
 
+.snipe.popup {
+    min-height: 400px !important;
+    overflow: hidden !important;
+}
+
 .snipe .wrapper {
     width: 70% !important;
     max-width: 400px !important;
@@ -163,13 +168,33 @@
 */
 .snipe .wrapper > .settings {
     -webkit-transform: rotateY(180deg) !important;
+    position: absolute !important;
+    top: 0 !important;
+}
+
+.snipe form.settings {
     font-size: 16px !important;
     color: #757575 !important;
     text-shadow: #111 -1px -1px 0px !important;
-    background: url('../images/bg.png') 0 0;
+    background: url('../images/bg.png') 0 0 repeat-x, url('../images/bg-flat.png') 0 0 !important;
     font-weight: normal !important;
-    position: absolute !important;
-    top: 0 !important;
+    -webkit-box-sizing: border-box !important;
+}
+
+.snipe.popup .settings {
+    width: 100% !important;
+    padding: 10px !important;
+}
+
+.snipe form.settings h1 {
+    font-size: 20px !important;
+}
+
+.snipe form.settings p {
+    font-size: 13px !important;
+    margin: 0 0 20px !important;
+    color: #ccc !important;
+    line-height: 18px !important;
 }
 
 .snipe .settings fieldgroup {
@@ -177,12 +202,22 @@
     display: block !important;
 }
 
-.snipe .settings label {
+.snipe form.settings fieldgroup p {
+    margin: 5px 0 10px !important;
+}
+
+.snipe.popup .settings fieldgroup {
+    margin-bottom: 20px !important;
+}
+
+.snipe .settings label,
+.snipe .settings h1 {
     display: block !important;
     margin-bottom: 7px !important;
 }
 
-.snipe .settings label em {
+.snipe .settings label em,
+.snipe .settings h1 em {
     color: rgba(255, 255, 255, 0.5) !important;
     font-size: 0.9em !important
 }
@@ -211,6 +246,7 @@
 .snipe .settings a:hover {
     color: #09A7B5 !important;
     border: 0 !important;
+    text-decoration: underline !important;
 }
 
 .snipe .settings input[type="button"].done {
@@ -245,7 +281,7 @@
     font-size: 16px !important;
     -webkit-border-radius: 5px !important;
     border: 2px solid #333 !important;
-    background-clip: padding-box;
+    background-clip: padding-box !important;
 }
 
 .snipe .settings .shortcut-field button {
@@ -257,7 +293,6 @@
     width: 18px !important;
     height: 18px !important;
     visibility: visible !important;
-
     border: 0 !important;
 
     -webkit-appearance: none !important;
@@ -312,7 +347,7 @@
 .snipe.anim2d.settings .input {
     -webkit-transform: rotateY(0deg) !important;
     opacity: 0 !important;
-    z-index: 0;
+    z-index: 0 !important;
 }
 
 

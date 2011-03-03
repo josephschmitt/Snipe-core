@@ -81,12 +81,10 @@ Snipe.Settings = Class.extend({
         }
 
         function onSubmit(e) {
-            console.log('settings submit');
             e.preventDefault();
         }
 
         function onDone(e) {
-            console.log('onDone');
             if (options.submit) {
                 options.submit.call(null);
             }
