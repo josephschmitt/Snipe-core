@@ -18,35 +18,38 @@
     display: -webkit-box !important;
     -webkit-box-sizing: border-box !important;
     -webkit-box-pack: center !important;
-    -webkit-perspective: 1000;
-
-    -webkit-transition-property: opacity, -webkit-transform !important;
-    -webkit-transition-duration: 200ms !important;
-    -webkit-transition-timing-function: ease-in-out !important;
 
     width: 100% !important;
+    height: 100% !important;
     position: fixed !important;
     z-index: 999999 !important;
-    top: 20px !important;
-
-    -webkit-transform: translateY(25px) !important;
-    opacity: 0 !important;
-}
-
-.snipe.in {
-    -webkit-transform: translateY(0) !important;
-    opacity: 1 !important;
-}
-
-.snipe.out {
-    -webkit-transform: translateY(-25px) !important;
-    opacity: 0 !important;
+    top: 0 !important;
 }
 
 .snipe .wrapper {
     width: 70% !important;
     max-width: 400px !important;
     position: relative !important;
+    top: 20px !important;
+    opacity: 0 !important;
+    
+    -webkit-perspective: 1000 !important;
+
+    -webkit-transition-property: opacity, -webkit-transform !important;
+    -webkit-transition-duration: 200ms !important;
+    -webkit-transition-timing-function: ease-in-out !important;
+    
+    -webkit-transform: translateY(25px) !important;
+}
+
+.snipe.in .wrapper {
+    -webkit-transform: translateY(0) !important;
+    opacity: 1 !important;
+}
+
+.snipe.out .wrapper {
+    -webkit-transform: translateY(-25px) !important;
+    opacity: 0 !important;
 }
 
 .snipe .wrapper > form {
