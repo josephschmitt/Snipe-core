@@ -130,10 +130,10 @@ var Snipe = Class.extend({
         }
 
         function onTabSelected(winid, tabid) {
+            self.hide();
             if (options.select) {
                 options.select.apply(null, [winid, tabid]);
             }
-            self.hide();
         }
         
         function onSettingsChanged(settings) {
