@@ -190,7 +190,7 @@ var Snipe = Class.extend({
 
                 //Get results
                 default:
-                    if (!e.ctrlKey) {
+                    if (!e.ctrlKey && !e.metaKey && !e.altKey) {
                         clearTimeout(timer);
                         timer = setTimeout(function () {
                             if (!field || (!field.value && field.value != '')) {return false;}
