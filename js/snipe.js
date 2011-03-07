@@ -143,36 +143,35 @@ var Snipe = Class.extend({
         }
 
         function onKeyDown(e) {
-            switch (e.keyCode) {
-                case KEY_UP:
-                    var curIndex = resultsList.curIndex,
-                        items = resultsList.element.querySelectorAll('li'),
-                        length = items.length || 0,
-                        prev = curIndex - 1 < 0 ? length - 1 : curIndex - 1;
+            //Up Arrow or Ctrl + P to go up
+            if ((e.keyCode == KEY_UP) || (e.ctrlKey && KEYMAP[e.keyCode].name == 'P')) {
+                var curIndex = resultsList.curIndex,
+                    items = resultsList.element.querySelectorAll('li'),
+                    length = items.length || 0,
+                    prev = curIndex - 1 < 0 ? length - 1 : curIndex - 1;
 
-                    resultsList.selectResult(items[prev]);
-                    e.preventDefault();
-                break;
+                resultsList.selectResult(items[prev]);
+                e.preventDefault();
+            }
+            
+            //Down Arrow or Ctrl + N to go down
+            else if (e.keyCode == KEY_DOWN || (e.ctrlKey && KEYMAP[e.keyCode].name == 'N')) {
+                var curIndex = resultsList.curIndex,
+                    items = resultsList.element.querySelectorAll('li'),
+                    length = items.length || 0,
+                    next = curIndex + 1 >= length ? 0 : curIndex + 1;
 
-                case KEY_DOWN:
-                    var curIndex = resultsList.curIndex,
-                        items = resultsList.element.querySelectorAll('li'),
-                        length = items.length || 0,
-                        next = curIndex + 1 >= length ? 0 : curIndex + 1;
-
-                    resultsList.selectResult(items[next]);
-                    e.preventDefault();
-                break;
-
-                case KEY_ESC:
-                    snipe.hide();
-                break;
+                resultsList.selectResult(items[next]);
+                e.preventDefault();
+            }
+            
+            //Esc closes
+            else if (e.keyCode == KEY_ESC) {
+                snipe.hide();
             }
         }
 
         function onKeyUp(e) {
-            // console.log('keyCode', e.keyCode);
-
             switch (e.keyCode) {
                 //Do nothing
                 case KEY_SHIFT:
@@ -191,11 +190,13 @@ var Snipe = Class.extend({
 
                 //Get results
                 default:
-                    clearTimeout(timer);
-                    timer = setTimeout(function () {
-                        if (!field || (!field.value && field.value != '')) {return false;}
-                        options.refresh.apply(null, [field.value]);
-                    }, 100);
+                    if (!e.ctrlKey) {
+                        clearTimeout(timer);
+                        timer = setTimeout(function () {
+                            if (!field || (!field.value && field.value != '')) {return false;}
+                            options.refresh.apply(null, [field.value]);
+                        }, 100);
+                    }
             }
         }
 
