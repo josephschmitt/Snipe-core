@@ -23,7 +23,7 @@ var Snipe = Class.extend({
      *      onDestroyed: function() {
      *          //Method to handle what happens when snipe is destroyed
      *      }
-     *      
+     *
      *      onSettingsChanged: function(settings) {
      *          //Method to handle what happens when snipe's settings are updated
      *      }
@@ -38,7 +38,7 @@ var Snipe = Class.extend({
             settingsBtn = document.createElement('a'),
             field = document.createElement('input'),
             resultsList = new Snipe.Results(document.createElement('ul'), {
-                select: onTabSelected, 
+                select: onTabSelected,
                 maxResults: options.maxResults
             }),
             settings = new Snipe.Settings(document.createElement('form'), {
@@ -135,7 +135,7 @@ var Snipe = Class.extend({
                 options.select.apply(null, [winid, tabid]);
             }
         }
-        
+
         function onSettingsChanged(settings) {
             if (options.onSettingsChanged) {
                 options.onSettingsChanged.apply(null, [settings]);
@@ -144,10 +144,11 @@ var Snipe = Class.extend({
 
         function onKeyDown(e) {
             //Previous item
-            if ((e.keyCode == KEY_UP) ||                            //Up arrow
+            if (
+                (e.keyCode == KEY_UP) ||                            //Up arrow
                 (e.ctrlKey && KEYMAP[e.keyCode].name == 'P') ||     //Ctrl+ P
                 (e.ctrlKey && KEYMAP[e.keyCode].name == 'K')) {     //Ctrl + K
-            
+
                 var curIndex = resultsList.curIndex,
                     items = resultsList.element.querySelectorAll('li'),
                     length = items.length || 0,
@@ -156,13 +157,13 @@ var Snipe = Class.extend({
                 resultsList.selectResult(items[prev]);
                 e.preventDefault();
             }
-            
+
             //Next Item
             else if (
                 (e.keyCode == KEY_DOWN) ||                          //Down arrow
                 (e.ctrlKey && KEYMAP[e.keyCode].name == 'N') ||     //Ctrl + N
                 (e.ctrlKey && KEYMAP[e.keyCode].name == 'J')) {     //Ctrl + J
-                    
+
                 var curIndex = resultsList.curIndex,
                     items = resultsList.element.querySelectorAll('li'),
                     length = items.length || 0,
@@ -171,7 +172,15 @@ var Snipe = Class.extend({
                 resultsList.selectResult(items[next]);
                 e.preventDefault();
             }
-            
+
+            //Select current result
+            else if (
+                (e.keyCode == KEY_ENTER) ||                         //Return key
+                (e.ctrlKey && KEYMAP[e.keyCode].name == 'L')) {     //Ctrl + L
+
+                resultsList.activateResult();
+            }
+
             //Close
             else if (e.keyCode == KEY_ESC) {                        //Esc key
                 snipe.hide();
@@ -219,7 +228,7 @@ var Snipe = Class.extend({
             else {
                 addClass(element, 'settings');
             }
-            
+
             if (e && e.preventDefault) {
                 e.preventDefault();
             }
@@ -270,19 +279,19 @@ var Snipe = Class.extend({
                 options.onRefreshed(element.clientHeight);
             }
         };
-        
+
         self.updateSettings = function(newSettings) {
             settings.set(newSettings);
         };
-        
+
         self.matchesShortcut = function(e) {
             if (!settings || !settings.get()) {
                 return false;
             }
-            
+
             var mods = settings.get().shortcut.modifiers,
                 key = settings.get().shortcut.key;
-            
+
             function matchesMods() {
                 for (var i = 0, length = mods.length, modKey, matches = true; i < length; i++) {
                     modKey = mods[i].modifier;
@@ -290,20 +299,20 @@ var Snipe = Class.extend({
                         return false;
                     }
                 }
-                
+
                 return true;
             }
-            
+
             if ( matchesMods() && e.keyCode == key.id) {
                 return true;
             }
-            
+
             return false;
         };
-        
-        
+
+
 // CONSTRUCTOR ________________________________________________________________
-        
+
         //Sucks to do UA detection, but Chrome won't support webkitBackfaceVisibility
         //until version 11, and this is the easiest way to detect that (no real feature-
         //detection for that CSS property).

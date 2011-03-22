@@ -1,4 +1,5 @@
-var KEY_SHIFT   = 16,
+var KEY_ENTER   = 13,
+    KEY_SHIFT   = 16,
     KEY_CTRL    = 17,
     KEY_ALT     = 18,
     KEY_CAPS    = 20,
