@@ -143,8 +143,11 @@ var Snipe = Class.extend({
         }
 
         function onKeyDown(e) {
-            //Up Arrow or Ctrl + P to go up
-            if ((e.keyCode == KEY_UP) || (e.ctrlKey && KEYMAP[e.keyCode].name == 'P')) {
+            //Previous item
+            if ((e.keyCode == KEY_UP) ||                            //Up arrow
+                (e.ctrlKey && KEYMAP[e.keyCode].name == 'P') ||     //Ctrl+ P
+                (e.ctrlKey && KEYMAP[e.keyCode].name == 'K')) {     //Ctrl + K
+            
                 var curIndex = resultsList.curIndex,
                     items = resultsList.element.querySelectorAll('li'),
                     length = items.length || 0,
@@ -154,8 +157,12 @@ var Snipe = Class.extend({
                 e.preventDefault();
             }
             
-            //Down Arrow or Ctrl + N to go down
-            else if (e.keyCode == KEY_DOWN || (e.ctrlKey && KEYMAP[e.keyCode].name == 'N')) {
+            //Next Item
+            else if (
+                (e.keyCode == KEY_DOWN) ||                          //Down arrow
+                (e.ctrlKey && KEYMAP[e.keyCode].name == 'N') ||     //Ctrl + N
+                (e.ctrlKey && KEYMAP[e.keyCode].name == 'J')) {     //Ctrl + J
+                    
                 var curIndex = resultsList.curIndex,
                     items = resultsList.element.querySelectorAll('li'),
                     length = items.length || 0,
@@ -165,8 +172,8 @@ var Snipe = Class.extend({
                 e.preventDefault();
             }
             
-            //Esc closes
-            else if (e.keyCode == KEY_ESC) {
+            //Close
+            else if (e.keyCode == KEY_ESC) {                        //Esc key
                 snipe.hide();
             }
         }
